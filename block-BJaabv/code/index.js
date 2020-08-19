@@ -8,8 +8,10 @@
   * [ ] Add an additional argument to the function that takes the conversion rate of human to dog years.
 */
 
-function calculateDogAge() {
+function calculateDogAge(puppyAge, ageConverter) {
   // Your code goes here
+  let ageDogYears = ageConverter * puppyAge;
+  return ageDogYears;
 }
 
 /*
@@ -19,8 +21,11 @@ function calculateDogAge() {
   * [ ] Return the total number of movie you will watch.
 */
 
-function calculateMoviesToWatch() {
+function calculateMoviesToWatch(age, weeklyMovies) {
   // Your code goes here
+  const MAX_AGE = 90;
+  const REM_AGE = (MAX_AGE - age) * 4 * 12;
+  return REM_AGE * weeklyMovies;
 }
 
 /*
@@ -29,8 +34,10 @@ function calculateMoviesToWatch() {
   * [ ] Convert it to fahrenheit and return "NN°F is NN°C"
 */
 
-function celsiusToFahrenheit() {
+function celsiusToFahrenheit(c) {
   // Your code goes here
+  let f = (c * 9) / 5 + 32;
+  return `${f}°F is ${c}°C`;
 }
 
 /*
@@ -39,8 +46,10 @@ function celsiusToFahrenheit() {
   * [ ] Convert it to celsius and return "NN°F is NN°C"
 */
 
-function celsiusToFahrenheit() {
+function fahrenheitToCelsius(f) {
   // Your code goes here
+  let c = ((f - 32) * 5) / 9;
+  return `${c}°C is ${f}°F`;
 }
 
 /*
@@ -51,8 +60,17 @@ function celsiusToFahrenheit() {
   * [ ] If the value of n is below 0 return "The number below 1 is not allowed"
 */
 
-function pow() {
+function pow(n, x) {
   // Your code goes here
+  let product = 1;
+  if (n < 1) {
+    return "The number below 1 is not allowed";
+  } else {
+    for (let i = 0; i < x; i++) {
+      product = product * n;
+    }
+  }
+  return product;
 }
 
 // Test
@@ -66,20 +84,32 @@ pow(-31, 2); // "The number below 1 is not allowed"
 and return sum or product of 1,…,n. If user enters any other value than `sum` or `product` alert `Not a valid Input`.
 */
 
-function sumOrProductOfN() {
+function sumOrProductOfN(n, str) {
   // Your code goes here
+  let product = 1;
+  if (str == "sum") {
+    return (n * (n + 1)) / 2;
+  } else if (str == "product") {
+    for (let i = 1; i <= n; i++) {
+      product *= i;
+    }
+    return product;
+  } else {
+    alert(`Not a valid Input`);
+  }
 }
 
-sumOrProductOfN(4, 'sum'); // 10
-sumOrProductOfN(4, 'product'); // 24
-sumOrProductOfN(4, 'hello'); // alert "Not a valid Input"
+sumOrProductOfN(4, "sum"); // 10
+sumOrProductOfN(4, "product"); // 24
+sumOrProductOfN(4, "hello"); // alert "Not a valid Input"
 
 /*
 6. 🎖Write a program that accepts a number n using argument and return the sum of the numbers 1 to n
 */
 
-function sumOfN() {
+function sumOfN(n) {
   // Your code goes here
+  return (n * (n + 1)) / 2;
 }
 
 /*
@@ -87,13 +117,26 @@ function sumOfN() {
 */
 
 // Your code goes here
+function sumOfN(n) {
+  // Your code goes here
+  let sum = 0;
+  for (let i = 1; i <= n; i++) {
+    if (i % 5 == 0 || i % 7 == 0) {
+      continue;
+    }
+    sum += i;
+  }
+
+  return sum;
+}
 
 /*
 8. 🎖Write a function `min` that takes two arguments and returns their minimum.
 */
 
-function min() {
+function min(val1, val2) {
   // Your code goes here
+  return val1 < val2 ? val1 : val2;
 }
 
 min(0, 10);
@@ -103,6 +146,7 @@ min(0, -10);
 9. 🎖Write a JavaScript function which accepts an argument and returns the type of the value.
 */
 
-function typeCheck() {
+function typeCheck(val1) {
   // Your code goes here
+  return typeof val1;
 }
