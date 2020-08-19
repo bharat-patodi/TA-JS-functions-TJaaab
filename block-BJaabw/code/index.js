@@ -11,12 +11,13 @@ minToSec(2) ➞ 120
 */
 
 // - Write a Function Decleration for above problem
-function minToSec() {
-  // Your code
+function minToSec(minutes = 0) {
+  return minutes * 60;
 }
 // - Execute the function with required parameter
+minToSec(10);
 
-/* 2. 
+/* 2.
 Create a function named isInRange which validates whether a number n is exclusively within the bounds of lower and upper.
 Return true and false based on that.
 
@@ -26,10 +27,11 @@ isInRange(1, 10, 19); // false
 */
 
 // - Write a Function Decleration for above problem
-function isInRange() {
-  // Your code
+function isInRange(lower, upper, n) {
+  return n > lower && n < upper ? true : false;
 }
 // - Execute the function with required parameter
+isInRange(12, 13, 10);
 
 /* 2. calculateBMI
 
@@ -49,8 +51,19 @@ Obese: BMI is 30 or more
 
 */
 
-function calculateBMI() {
-  // Your code
+function calculateBMI(weight = 1, height = 1) {
+  // Providing default values as 1 since bmi cannot be zero but this isn't an optimal choice
+  let bmi = weight / (height * height);
+  switch (true) {
+    case bmi < 18.5:
+      return `Underweight`;
+    case bmi > 18.5 && bmi < 24.9:
+      return `Normal Weight`;
+    case bmi > 24.9 && bmi < 29.9:
+      return `Overweight`;
+    case bmi > 30:
+      return `Obese`;
+  }
 }
 
 /* 3. appropiateDrinks
@@ -64,10 +77,19 @@ Create a function that take the age are return the appropiate drink based on the
 
 */
 
-function appropiateDrinks() {
-  // Your code
+function appropiateDrinks(age = 1) {
+  // Experimenting here by not providing a break statement since the code block is already getting closed by the presence of a return statement.
+  switch (true) {
+    case age < 14:
+      return "drink fruit juice";
+    case age > 14 && age < 18:
+      return "drink soda";
+    case age > 18 && age < 21:
+      return "drink fruit-flavored beer";
+    case age > 21:
+      return "drink throat-piercing vodka";
+  }
 }
-
 /* 4. Add two numers or string
 
 Write a function that accepts two numbers or string and returns the sum of the numbers and concatenation of the strings.
@@ -79,13 +101,19 @@ Twist is when user passes anything other than number, or string value you should
 
 */
 
-function sum() {
-  // Your code
+function sum(val1 = "Hello", val2 = "World") {
+  if (typeof val1 == "number" && typeof val2 == "number") {
+    return val1 + val2;
+  } else if (typeof val1 == "string" && typeof val2 == "string") {
+    return `${val1} ${val2}`;
+  } else {
+    alert("Enter valid values");
+  }
 }
 
 // Function Test
-sum(2, 4); // 4
-sum('Arya', 'Stark'); // "Arya Stark"
-sum('Arya', 2); // Enter valid Values
+sum(2, 4); // 6
+sum("Arya", "Stark"); // "Arya Stark"
+sum("Arya", 2); // Enter valid Values
 sum(null, 2); // Enter valid Values
 sum(undefined, 2); // Enter valid Values
